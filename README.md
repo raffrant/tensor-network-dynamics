@@ -5,17 +5,16 @@
 ![Status](https://img.shields.io/badge/status-research%20prototype-8A6D3B?style=flat-square)
 ![Tensor Networks](https://img.shields.io/badge/focus-tensor%20networks-01696f?style=flat-square)
 
-A research-oriented code repository for tensor-network-based studies of **measurement-driven state preparation**, **graph-state style concentration protocols**, and **non-equilibrium spin-chain dynamics**, with a particular emphasis on **Floquet / discrete time-crystal observables** and long-time MPS evolution. [file:73][file:74][file:75][file:76]
+A research-oriented code repository for tensor-network-based studies of **measurement-driven state preparation**, **graph-state style concentration protocols**, and **non-equilibrium spin-chain dynamics**, with a particular emphasis on **Floquet / discrete time-crystal observables** and long-time MPS evolution. 
 
 ## Scientific scope
 
-This repository combines two closely related strands of many-body quantum simulation: [file:73][file:74][file:75][file:76]
+This repository combines two closely related strands of many-body quantum simulation:
 
-- **Measurement-based tensor-network workflows** in Python, focused on controlled-phase resources, local measurement maps, fidelity objectives, and constrained numerical optimization. [file:75][file:76]
-- **MPS-based driven and static spin-chain dynamics** in Julia using `ITensors.jl`, including long-time magnetization tracking in Heisenberg and driven Ising settings. [file:73][file:74]
+- **Measurement-based tensor-network workflows** in Python, focused on controlled-phase resources, local measurement maps, fidelity objectives, and constrained numerical optimization.
+- **MPS-based driven and static spin-chain dynamics** in Julia using `ITensors.jl`, including long-time magnetization tracking in Heisenberg and driven Ising settings.
 
-The current codebase is best understood as a compact research lab for prototyping ideas at the interface of tensor networks, quantum state engineering, and driven many-body dynamics. [file:73][file:74][file:75][file:76]
-
+The current codebase is best understood as a compact research lab for prototyping ideas at the interface of tensor networks, quantum state engineering, and driven many-body dynamics. 
 ## Repository layout
 
 ```text
@@ -42,18 +41,18 @@ tensor-network-dynamics-public/
 ### Notebooks
 
 #### `notebooks/discrete-time-crystal-ising-chain.ipynb`
-A Julia / `ITensors.jl` notebook for a disordered driven Ising-chain setup with near-\(\pi\) spin rotations and local magnetization tracking, naturally aligned with discrete time-crystal style diagnostics. [file:74]
+A Julia / `ITensors.jl` notebook for a disordered driven Ising-chain setup with near-\(\pi\) spin rotations and local magnetization tracking, naturally aligned with discrete time-crystal style diagnostics.
 
 #### `notebooks/mps-heisenberg-chain-dynamics.ipynb`
-A Julia / `ITensors.jl` notebook for MPS evolution in a Heisenberg chain, measuring middle-spin magnetization over long times and averaging across disorder realizations. [file:73]
+A Julia / `ITensors.jl` notebook for MPS evolution in a Heisenberg chain, measuring middle-spin magnetization over long times and averaging across disorder realizations.
 
 ### Python scripts
 
 #### `python/tensor_network_concentration.py`
-Prototype routines for explicit tensor contractions, measurement maps, controlled-phase resource construction, entanglement diagnostics, and optimization-driven concentration/state-preparation experiments. [file:76]
+Prototype routines for explicit tensor contractions, measurement maps, controlled-phase resource construction, entanglement diagnostics, and optimization-driven concentration/state-preparation experiments.
 
 #### `python/measurement_state_optimization.py`
-A more focused optimization script for measurement-assisted target-state preparation with constrained parameters and fidelity-based objectives. [file:75]
+A more focused optimization script for measurement-assisted target-state preparation with constrained parameters and fidelity-based objectives.
 
 ## Installation
 
@@ -74,19 +73,13 @@ Pkg.add(["ITensors", "Distributions", "Plots", "LaTeXStrings"])
 
 ## Research directions
 
-This repo is particularly suitable for exploring: [file:73][file:74][file:75][file:76]
+This repo is particularly suitable for exploring: 
 
-- measurement-based state engineering on graph-like entangled resources, [file:75][file:76]
-- optimization of local rotations and measurement angles, [file:75][file:76]
-- Floquet spin dynamics and subharmonic response diagnostics, [file:74]
-- long-time MPS evolution of disordered spin chains. [file:73]
+- measurement-based state engineering on graph-like entangled resources, 
+- optimization of local rotations and measurement angles, 
+- Floquet spin dynamics and subharmonic response diagnostics, 
+- long-time MPS evolution of disordered spin chains.
 
-## Recommended next steps
-
-- Modularize repeated tensor-network utilities into a small reusable core. [file:75][file:76]
-- Add reproducible parameter configs and saved outputs for sweeps. [file:73][file:74][file:75][file:76]
-- Export figures and data products into versioned `results/` folders. [file:73][file:74]
-- Add one minimal example per scientific workflow. [file:73][file:74][file:75][file:76]
 
 ## Status
 
