@@ -1,6 +1,6 @@
 # Tensor Network Dynamics for Measurement-Driven State Engineering and Time-Crystal Response
 
-![GPU Tensor-Network Extraction Benchmark](image.jpg)
+![GPU Tensor-Network Extraction Benchmark](https://github.com/raffrant/tensor-network-dynamics/blob/main/images/gpubenchmarkfrom6to4.pdf)
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Julia](https://img.shields.io/badge/Julia-1.9%2B-9558B2?style=flat-square&logo=julia&logoColor=white)
