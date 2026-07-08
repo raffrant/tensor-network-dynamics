@@ -1,20 +1,23 @@
 # Tensor Network Dynamics for Measurement-Driven State Engineering and Time-Crystal Response
 
+![GPU Tensor-Network Extraction Benchmark](image.jpg)
+
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Julia](https://img.shields.io/badge/Julia-1.9%2B-9558B2?style=flat-square&logo=julia&logoColor=white)
 ![Status](https://img.shields.io/badge/status-research%20prototype-8A6D3B?style=flat-square)
 ![Tensor Networks](https://img.shields.io/badge/focus-tensor%20networks-01696f?style=flat-square)
 
-A research-oriented code repository for tensor-network-based studies of **measurement-driven state preparation**, **graph-state style concentration protocols**, and **non-equilibrium spin-chain dynamics**, with a particular emphasis on **Floquet / discrete time-crystal observables** and long-time MPS evolution. 
+A research-oriented code repository for tensor-network studies of **measurement-driven state preparation**, **graph-state concentration**, and **non-equilibrium spin-chain dynamics**, with a strong emphasis on **GPU-accelerated optimization**, **Floquet / discrete time-crystal observables**, and long-time MPS evolution.
 
 ## Scientific scope
 
-This repository combines two closely related strands of many-body quantum simulation:
+This repository brings together two closely related strands of many-body quantum simulation:
 
 - **Measurement-based tensor-network workflows** in Python, focused on controlled-phase resources, local measurement maps, fidelity objectives, and constrained numerical optimization.
 - **MPS-based driven and static spin-chain dynamics** in Julia using `ITensors.jl`, including long-time magnetization tracking in Heisenberg and driven Ising settings.
 
-The current codebase is best understood as a compact research lab for prototyping ideas at the interface of tensor networks, quantum state engineering, and driven many-body dynamics. 
+The codebase is best understood as a compact research lab for prototyping ideas at the interface of tensor networks, quantum state engineering, and driven many-body dynamics.
+
 ## Repository layout
 
 ```text
@@ -49,10 +52,20 @@ A Julia / `ITensors.jl` notebook for MPS evolution in a Heisenberg chain, measur
 ### Python scripts
 
 #### `python/tensor_network_concentration.py`
-Prototype routines for explicit tensor contractions, measurement maps, controlled-phase resource construction, entanglement diagnostics, and optimization-driven concentration/state-preparation experiments.
+Prototype routines for explicit tensor contractions, measurement maps, controlled-phase resource construction, entanglement diagnostics, and optimization-driven concentration / state-preparation experiments.
 
 #### `python/measurement_state_optimization.py`
 A more focused optimization script for measurement-assisted target-state preparation with constrained parameters and fidelity-based objectives.
+
+## GPU benchmark
+
+The current GPU-accelerated benchmark explores whether a four-qubit target graph state can be extracted from a six-qubit resource tensor network by applying parameterized controlled-phase graphs, local measurements, and local single-qubit corrections before benchmarking the output with fidelity.
+
+The figure below summarizes the current GPU-driven benchmark:
+- infidelity vs phase for several target families,
+- best fidelity by family,
+- entanglement entropy versus best fidelity,
+- and the resource adjacency matrix.
 
 ## Installation
 
@@ -64,6 +77,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+For the GPU benchmark, install a CUDA-enabled PyTorch build and the usual plotting stack:
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install numpy matplotlib pandas
+```
+
 ### Julia packages
 
 ```julia
@@ -73,14 +93,26 @@ Pkg.add(["ITensors", "Distributions", "Plots", "LaTeXStrings"])
 
 ## Research directions
 
-This repo is particularly suitable for exploring: 
+This repo is particularly suitable for exploring:
 
-- measurement-based state engineering on graph-like entangled resources, 
-- optimization of local rotations and measurement angles, 
-- Floquet spin dynamics and subharmonic response diagnostics, 
-- long-time MPS evolution of disordered spin chains.
+- measurement-based state engineering on graph-like entangled resources,
+- optimization of local rotations and measurement angles,
+- Floquet spin dynamics and subharmonic response diagnostics,
+- long-time MPS evolution of disordered spin chains,
+- GPU-driven variational tensor-network simulation and benchmarking.
 
+## Next steps
+
+Planned next steps are:
+- start from graphs with **controlled-phase gates of random \(\phi\)**,
+- try to **extract perfect graph states** from those resources,
+- compare how extraction quality depends on graph structure and phase randomness,
+- and expand the GPU benchmark to larger or more frustrated graph families.
 
 ## Status
 
-This is a **research prototype** repository: scientifically interesting, technically substantial, and ideal for further cleanup into a stronger public codebase or paper companion repo. [file:73][file:74][file:75][file:76]
+This is a **research prototype** repository: scientifically interesting, technically substantial, and ideal for cleanup into a stronger public codebase or paper companion repo.
+
+## Figure
+
+The benchmark image illustrates the current GPU extraction workflow and the graph-structured diagnostics used to compare target families.
