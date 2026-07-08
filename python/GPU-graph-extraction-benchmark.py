@@ -1,3 +1,77 @@
+
+"""
+GPU Tensor-Network Graph Extraction Benchmark (PyTorch Autograd + Matplotlib)
+===============================================================================
+
+This script studies whether a four-qubit target graph state can be extracted
+from a six-qubit resource tensor network by:
+
+    1. Preparing a six-leg tensor-network resource.
+    2. Applying a parameterized graph of controlled-phase gates.
+    3. Post-selecting / measuring two qubits.
+    4. Applying local single-qubit rotations.
+    5. Benchmarking the extracted state against a target graph state by fidelity.
+
+The central benchmark is
+
+    infidelity = 1 - |<psi_extracted | psi_target>|^2.
+
+Small infidelity indicates successful graph extraction.
+
+All state evolution, gradient computation, and parameter updates are performed
+on GPU using PyTorch's autograd, making this a fully GPU-driven variational
+tensor-network benchmark.
+
+
+Requirements
+------------
+- Python 3.9+
+- CUDA-enabled PyTorch (tested with torch >= 2.0, CUDA 11.8/12.1)
+- NumPy
+- Matplotlib
+- Pandas
+
+Install via:
+
+    pip install torch --index-url https://download.pytorch.org/whl/cu121
+    pip install numpy matplotlib pandas
+
+
+Usage
+-----
+Run the script from the command line:
+
+    python gpu_tensor_graph_autograd_matplotlib.py
+
+It will:
+- Check for CUDA availability and abort if no GPU is detected.
+- Build the six-qubit resource tensor network.
+- Scan multiple target families (path4, cycle4, star4, complete4, optionally ghz4, w4).
+- For each (family, theta) pair, optimize extraction parameters with Adam on GPU.
+- Print resource and target adjacency matrices to the terminal.
+- Display interactive Matplotlib figures showing:
+    • Infidelity vs phase by family
+    • Best fidelity bar chart by family
+    • 2|2 bipartite entropy vs best fidelity
+    • Resource adjacency matrix heatmap
+    • Target adjacency matrix heatmaps
+    • Optimization history for a representative run
+
+
+Tensor-Network Structure
+------------------------
+Resource graph (6 qubits):
+    Edges: (0,1), (1,2), (2,3), (3,4), (4,5), (0,5), (2,5), (3,5), (4,5)
+
+Target families (4 qubits):
+- path4:     (0,1), (1,2), (2,3)
+- cycle4:    (0,1), (1,2), (2,3), (3,0)
+- star4:     center=0, edges (0,1), (0,2), (0,3)
+- complete4: all pairs (i,j) with i < j
+- ghz4:      GHZ state (not a graph state)
+- w4:        W state (not a graph state)
+
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
