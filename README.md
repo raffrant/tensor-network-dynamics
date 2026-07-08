@@ -32,6 +32,7 @@ tensor-network-dynamics-public/
 │   └── mps-heisenberg-chain-dynamics.ipynb
 ├── python/
 │   ├── measurement_state_optimization.py
+│   ├── GPU-graph-extraction-benchmark.py    
 │   └── tensor_network_concentration.py
 ├── .gitignore
 ├── LICENSE
@@ -57,7 +58,7 @@ Prototype routines for explicit tensor contractions, measurement maps, controlle
 #### `python/measurement_state_optimization.py`
 A more focused optimization script for measurement-assisted target-state preparation with constrained parameters and fidelity-based objectives.
 
-## GPU benchmark
+## GPU benchmark   `python/GPU-graph-extraction-benchmark.py`
 
 The current GPU-accelerated benchmark explores whether a four-qubit target graph state can be extracted from a six-qubit resource tensor network by applying parameterized controlled-phase graphs, local measurements, and local single-qubit corrections before benchmarking the output with fidelity.
 
